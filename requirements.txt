@@ -1,1 +1,3 @@
-
+crewai
+streamlit
+openai
