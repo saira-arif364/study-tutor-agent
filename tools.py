@@ -9,11 +9,9 @@ def calculator(expression: str) -> str:
     """
 
     try:
-
         allowed = "0123456789+-*/().% "
 
         if not all(char in allowed for char in expression):
-
             return "Invalid mathematical expression."
 
         result = eval(
@@ -25,7 +23,6 @@ def calculator(expression: str) -> str:
         return f"Calculation result: {result}"
 
     except Exception:
-
         return "Unable to calculate this expression."
 
 
