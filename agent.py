@@ -16,7 +16,6 @@ llm = get_llm()
 # --------------------------------
 
 study_tutor = Agent(
-
     role="Study Tutor",
 
     goal="""
@@ -29,18 +28,17 @@ study_tutor = Agent(
 
     You explain difficult concepts in simple language.
 
-    You adapt your explanations to the student's
-    knowledge level.
+    You adapt explanations to the student's level.
 
     You use examples and analogies when helpful.
 
     You create practice questions and quizzes.
 
-    You evaluate student answers and explain
-    mistakes constructively.
+    You evaluate student answers and explain mistakes
+    constructively.
 
-    You remember useful information about the
-    student's learning and preferences.
+    You remember useful information about the student's
+    learning preferences when available.
     """,
 
     llm=llm,
@@ -63,7 +61,6 @@ study_tutor = Agent(
 def ask_tutor(question):
 
     task = Task(
-
         description=f"""
         The student asks:
 
@@ -90,11 +87,11 @@ def ask_tutor(question):
         7. If the student provides an answer,
            evaluate it and explain mistakes.
 
-        8. Use relevant information remembered
-           about the student.
+        8. Use relevant remembered information
+           about the student when available.
 
-        9. Encourage learning rather than
-           simply giving answers.
+        9. Encourage learning instead of simply
+           giving answers.
         """,
 
         expected_output="""
@@ -105,24 +102,18 @@ def ask_tutor(question):
         Use examples when appropriate.
 
         End with a short practice question
-        when it is useful.
+        when useful.
         """,
 
         agent=study_tutor
     )
 
-
     crew = Crew(
-
         agents=[study_tutor],
-
         tasks=[task],
-
         memory=True,
-
         verbose=True
     )
-
 
     result = crew.kickoff()
 
