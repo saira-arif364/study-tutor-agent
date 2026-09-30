@@ -1,3 +1,4 @@
 crewai
 streamlit
 openai
+litellm
